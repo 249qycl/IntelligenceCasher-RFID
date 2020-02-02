@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "include.h": "c"
+    },
+    "cSpell.words": [
+        "NVIC",
+        "RDRF",
+        "RFID",
+        "uartn"
+    ],
+    "C_Cpp.errorSquiggles": "Disabled"
+}
