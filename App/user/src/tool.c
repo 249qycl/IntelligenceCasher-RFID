@@ -1,27 +1,43 @@
 #include "common.h"
 #include "include.h"
 
-
-#define Header	0xBB
-#define End		0x7E
-uint8 check_sum(uint8 *buff)
+/***********************************************************************************************
+*功  能	: 串口数据接收缓冲队列
+*参  数	: None
+*返回值	: None
+*作  者	: zyl
+*日  期	: 2019/12/31  
+***********************************************************************************************/
+Queue dataQueue;
+enum _queue{ERR,OK};
+void queueInit()
 {
-	uint16 sum=0;
-	uint8 i=1;
-	while(buff[i+1]!=End)
-	{
-		sum+=buff[i];
-		i++;
-	}
-	return sum%256;
+	dataQueue.front = 0;
+	dataQueue.rear = 0;
+	dataQueue.pop = queuePop;
+	dataQueue.push = queuePush;
+	dataQueue.isEmpty = queueIsEmpty;
 }
 
-uint32 parameter_length(uint8 *buff)
+uint8 queuePush(uint8 data)
 {
-	uint32 i=4;
-	while(buff[i+2]!=End)
-	{
-		i++;
-	}
-	return (i-4);	
+	if ((dataQueue.rear + 1) % QUEUE_SIZE == dataQueue.front)
+		return ERR;
+	dataQueue.array[dataQueue.rear] = data;
+	dataQueue.rear = (dataQueue.rear + 1) % QUEUE_SIZE;
+	return OK;
+}
+
+uint8 queuePop()
+{
+	if(OK==queueIsEmpty())
+    	return ERR;
+    uint8 data = dataQueue.array[dataQueue.front];
+    dataQueue.front = (dataQueue.front+1)%QUEUE_SIZE;
+    	return data;
+}
+
+uint8 queueIsEmpty()
+{
+	return dataQueue.front == dataQueue.rear;
 }

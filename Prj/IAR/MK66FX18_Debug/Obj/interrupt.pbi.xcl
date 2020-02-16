@@ -1,4 +1,4 @@
-"F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\App\user\src\user.c"
+"F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\App\user\src\interrupt.c"
 -std=c11
 -ferror-limit=0
 -fbracket-depth=512

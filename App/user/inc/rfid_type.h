@@ -234,17 +234,18 @@ typedef union {
 //通过切换接收容器，实现对多次查询数组的接收
 typedef struct
 {
-	uint8 RX_flag;	 //接收状态指示
-	uint8 RX_finish;   //接收结束标志
-	uint8 RX_count;	//接收时间间隔判断
-	uint8 RX_buff[30]; //字符接收缓冲区
-	uint8 RX_num;	  //接收的字符串长度统计
-	uint8 RX_times;
+	//字符串接收辅助参数
+	uint8 rx_flag;	 //接收状态指示
+	uint8 rx_finish;   //接收结束标志
+	uint8 rx_timer;	//接收时间间隔判断
+	uint8 rx_len;	  //接收的字符串长度统计
+	uint8 rx_buff[30]; //字符接收缓冲区
+
+	uint8 *tx_buff;		//字符串发送指针
 	uint8 query_times; //轮询次数
 	uint8 SP;		   //堆栈栈顶指针【数据先进栈,然后指针加一】
 	uint8 run_state;   //RFID设备状态指示
-	enum
-	{
+	enum {
 		ERROR = 0xFF,
 		STOP_SUCCESS = 0x28,
 		SELECT_SUCCESS = 0x0C,
@@ -255,7 +256,7 @@ typedef struct
 		RX_QUERY = 0x02,
 		BEGIN = 0xBB, //帧起始
 		END = 0x7E,   //帧结尾
-	}R_MSG;
+	} R_MSG;
 
 	union {
 		uint8 buff[4];
