@@ -39,8 +39,10 @@
 #include  "enter.h"
 
 #include  "interrupt.h"
-#include  "tool.h"
+#include  "queue.h"
+#include  "buffer.h"
 #include  "user.h"
 #include  "msg_format.h"
+#include  "msg.h"
 
 #endif  //__INCLUDE_H__

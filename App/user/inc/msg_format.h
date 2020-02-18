@@ -4,15 +4,15 @@
 /*********************************
 *		硬件设备查询指令命令帧
 **********************************/
-extern uint8 T_hardware_query[8];
+extern uint8 tHardwareCmd[8];
 /*********************************
 *		硬件设备查询响应
 **********************************/
-extern uint8 R_hardware_answer[18];
+extern uint8 rHardwareInfo[18];
 /*********************************
 *		单次查询指令命令帧
 **********************************/
-extern uint8 T_single_query[7];
+extern uint8 tOnceCmd[7];
 
 /*********************************
 *		错误帧返回0x01 0xFF
@@ -20,93 +20,88 @@ extern uint8 T_single_query[7];
 
 
 /*********************************
-*		查询指令返回信息帧
+*		查询指令返回信息帧[单、多共用]
 **********************************/
-extern R_answer_right_Type R_answer_right;
+extern R_answer_right_Type rQueryMsg;
 /*********************************
 *		查询100次命令帧
 **********************************/
-extern uint8 T_repeat_query_100[10];
+extern uint8 tPoll_100[10];
 /*********************************
 *		多次轮询停止命令帧
 **********************************/
-extern uint8 T_repeat_query_stop[7];
+extern uint8 tPollStop[7];
 /*********************************
 *		多次轮询停止响应帧
 **********************************/
-extern uint8 R_repeat_answer_stop[8];
+extern uint8 rPollStop[8];
 
 
 /*********************************
 *		标签选择命令帧
 **********************************/
-extern T_select_command_Typedef T_select_command;
+extern T_select_command_Typedef tSelectCmd;
 /*********************************
 *		选择成功响应帧
 **********************************/
-extern uint8 R_select_command[8];
+extern uint8 rSelectOk[8];
 
 
 /*********************************
 *		读RFU存储区命令帧
 **********************************/
-extern T_read_RFU_Typedef T_read_RFU;
+extern T_read_RFU_Typedef tReadRFU;
 /*********************************
 *		读RFU存储区信息帧
 **********************************/
-extern R_read_RFU_Typedef R_read_RFU;
+extern R_read_RFU_Typedef rReadRFU;
 /*********************************
 *		读EPC存储区命令帧
 **********************************/
-extern T_read_EPC_Typedef T_read_EPC;
+extern T_read_EPC_Typedef tReadEPC;
 /*********************************
 *		读EPC存储区信息帧
 **********************************/
-extern R_read_EPC_Typedef R_read_EPC;
+extern R_read_EPC_Typedef rReadEPC;
 /*********************************
 *		读TID存储区命令帧
 **********************************/
-extern T_read_TID_Typedef T_read_TID;
+extern T_read_TID_Typedef tReadTID;
 /*********************************
 *		读TID存储区信息帧
 **********************************/
-extern R_read_TID_Typedef R_read_TID;
+extern R_read_TID_Typedef rReadTID;
 /*********************************
 *		读USER存储区命令帧
 **********************************/
-extern T_read_USER_Typedef T_read_USER;
+extern T_read_USER_Typedef tReadUSER;
 /*********************************
 *		读USER存储区信息帧
 **********************************/
-extern R_read_USER_Typedef R_read_USER;
-/*********************************
-*		读标签存储区错误响应帧
-**********************************/
-extern uint8 R_read_error[8];
-
+extern R_read_USER_Typedef rReadUSER;
 
 /*********************************
 *		写RFU存储区命令帧
 **********************************/
-extern T_write_RFU_Typedef T_write_RFU;
+extern T_write_RFU_Typedef tWriteRFU;
 /*********************************
 *		写EPC存储区命令帧
 **********************************/
-extern T_write_EPC_Typedef T_write_EPC;
+extern T_write_EPC_Typedef tWriteEPC;
 /*********************************
 *		写USER存储区命令帧
 **********************************/
-extern T_write_USER_Typedef T_write_USER;
+extern T_write_USER_Typedef tWriteUSER;
 /*********************************
 *		写标签存储区成功通知帧
 **********************************/
-extern R_write_right_Typedef R_write_right;
+extern R_write_right_Typedef rWriteOk;
 /*********************************
 *		写标签存储区失败错误帧
 **********************************/
-extern uint8 R_write_error[8];
+//extern uint8 R_write_error[8];
 /*********************************
 *		全局数据管理变量
 **********************************/
-extern MSG_stack_Typedef MSG_stack;
+extern MSG_stack_Typedef msgStack;
 #endif

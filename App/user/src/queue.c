@@ -9,7 +9,7 @@
 *日  期	: 2019/12/31  
 ***********************************************************************************************/
 Queue dataQueue;
-enum _queue{ERR,OK};
+
 void queueInit()
 {
 	dataQueue.front = 0;
@@ -22,16 +22,16 @@ void queueInit()
 uint8 queuePush(uint8 data)
 {
 	if ((dataQueue.rear + 1) % QUEUE_SIZE == dataQueue.front)
-		return ERR;
+		return Error;
 	dataQueue.array[dataQueue.rear] = data;
 	dataQueue.rear = (dataQueue.rear + 1) % QUEUE_SIZE;
-	return OK;
+	return Ok;
 }
 
 uint8 queuePop()
 {
-	if(OK==queueIsEmpty())
-    	return ERR;
+	if(Ok==queueIsEmpty())
+    	return Error;
     uint8 data = dataQueue.array[dataQueue.front];
     dataQueue.front = (dataQueue.front+1)%QUEUE_SIZE;
     	return data;
@@ -41,3 +41,4 @@ uint8 queueIsEmpty()
 {
 	return dataQueue.front == dataQueue.rear;
 }
+

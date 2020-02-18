@@ -3,5 +3,5 @@
 
 
 void UART3_RX_Handler(void);
-
+void PIT_Hander(void);
 #endif

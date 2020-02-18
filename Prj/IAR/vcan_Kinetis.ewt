@@ -2404,16 +2404,22 @@
             <group>
                 <name>inc</name>
                 <file>
+                    <name>$PROJ_DIR$\..\..\App\user\inc\buffer.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\App\user\inc\interrupt.h</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\App\user\inc\msg.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\App\user\inc\msg_format.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\App\user\inc\rfid_type.h</name>
+                    <name>$PROJ_DIR$\..\..\App\user\inc\queue.h</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\App\user\inc\tool.h</name>
+                    <name>$PROJ_DIR$\..\..\App\user\inc\rfid_type.h</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\App\user\inc\user.h</name>
@@ -2422,13 +2428,19 @@
             <group>
                 <name>src</name>
                 <file>
+                    <name>$PROJ_DIR$\..\..\App\user\src\buffer.c</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\App\user\src\interrupt.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\App\user\src\msg.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\App\user\src\msg_format.c</name>
                 </file>
                 <file>
-                    <name>$PROJ_DIR$\..\..\App\user\src\tool.c</name>
+                    <name>$PROJ_DIR$\..\..\App\user\src\queue.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\App\user\src\user.c</name>

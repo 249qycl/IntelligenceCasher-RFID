@@ -14,6 +14,8 @@ typedef struct queue
 
 extern Queue dataQueue;
 
+void queueInit();
+
 uint8 queueIsEmpty();
 uint8 queuePop();
 uint8 queuePush(uint8 data);

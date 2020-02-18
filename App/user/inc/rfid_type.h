@@ -8,16 +8,14 @@ typedef union {
 		uint8 other[8];
 		union {
 			uint8 buff[12];
-			struct
-			{
-				uint8 user_means[12];
-			} msg;
+			uint8 user_means[12];
 		} EPC;
 		union {
 			uint8 buff[2];
 			uint16 data;
-		} CRC;
-		uint8 check_sum;
+		} CRC; //暂不使用
+		uint8 checkSum;
+		uint8 end;
 	} msg;
 } R_answer_right_Type;
 
@@ -30,7 +28,7 @@ typedef union {
 			uint8 buff[12];
 			uint8 user_means[12];
 		} EPC;
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } T_select_command_Typedef;
@@ -44,7 +42,7 @@ typedef union {
 		uint8 membank; //0x00:RFU	0x01:EPC	0x02:TID	0x03:USER区
 		uint16 SA;	 //地址偏移2	2	0	0
 		uint16 DL;	 //数据长度2	6	0CH	20H
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } T_read_RFU_Typedef;
@@ -61,8 +59,8 @@ typedef union {
 		union {
 			uint8 buff[4];
 			uint8 user_means[4];
-		} DATA; //保存密码的区域
-		uint8 check_sum;
+		} RFU; //保存密码的区域
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } R_read_RFU_Typedef;
@@ -76,7 +74,7 @@ typedef union {
 		uint8 membank; //0x00:RFU	0x01:EPC	0x02:TID	0x03:USER区
 		uint16 SA;	 //地址偏移2	2	0	0
 		uint16 DL;	 //数据长度2	6	6H	8H
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } T_read_EPC_Typedef;
@@ -94,7 +92,7 @@ typedef union {
 			uint8 buff[12];
 			uint8 user_means[12];
 		} EPC2; //EPC数据存储区域
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } R_read_EPC_Typedef;
@@ -108,7 +106,7 @@ typedef union {
 		uint8 membank; //0x00:RFU	0x01:EPC	0x02:TID	0x03:USER区
 		uint16 SA;	 //地址偏移2	2	0	0
 		uint16 DL;	 //数据长度2	6	6H	8H
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } T_read_TID_Typedef;
@@ -126,7 +124,7 @@ typedef union {
 			uint8 buff[12];
 			uint8 user_means[12];
 		} TID; //TID数据存储区域
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } R_read_TID_Typedef;
@@ -140,7 +138,7 @@ typedef union {
 		uint8 membank; //0x00:RFU	0x01:EPC	0x02:TID	0x03:USER区
 		uint16 SA;	 //地址偏移2	2	0	0
 		uint16 DL;	 //数据长度2	6	6H	6H
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } T_read_USER_Typedef;
@@ -158,7 +156,7 @@ typedef union {
 			uint8 buff[12];
 			uint8 user_means[12];
 		} USER; //USER数据存储区域
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } R_read_USER_Typedef;
@@ -176,7 +174,7 @@ typedef union {
 		{
 			uint8 buff[4];
 		} DATA; //密码写入
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } T_write_RFU_Typedef;
@@ -194,7 +192,7 @@ typedef union {
 		{
 			uint8 buff[12];
 		} EPC;
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } T_write_EPC_Typedef;
@@ -212,7 +210,7 @@ typedef union {
 		{
 			uint8 buff[12];
 		} USER;
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } T_write_USER_Typedef;
@@ -227,57 +225,61 @@ typedef union {
 			uint8 user_means[12];
 		} EPC; //标签选择码
 		uint8 parameter;
-		uint8 check_sum;
+		uint8 checkSum;
 		uint8 end;
 	} msg;
 } R_write_right_Typedef;
-//通过切换接收容器，实现对多次查询数组的接收
+
 typedef struct
 {
-	//字符串接收辅助参数
-	uint8 rx_flag;	 //接收状态指示
-	uint8 rx_finish;   //接收结束标志
-	uint8 rx_timer;	//接收时间间隔判断
-	uint8 rx_len;	  //接收的字符串长度统计
-	uint8 rx_buff[30]; //字符接收缓冲区
-
-	uint8 *tx_buff;		//字符串发送指针
-	uint8 query_times; //轮询次数
-	uint8 SP;		   //堆栈栈顶指针【数据先进栈,然后指针加一】
-	uint8 run_state;   //RFID设备状态指示
-	enum {
-		ERROR = 0xFF,
-		STOP_SUCCESS = 0x28,
-		SELECT_SUCCESS = 0x0C,
-		MEMORY_READ = 0x39,
-		MEMORY_WRITE = 0x49,
-		RX_GENERAL = 0x01,
-		RX_NONE = 0x00,
-		RX_QUERY = 0x02,
+	uint8 SP;		  //堆栈栈顶指针【数据先进栈,然后指针加一】
+	uint8 nowPointer; //指向发送指令的EPC所在位置
+	enum
+	{
 		BEGIN = 0xBB, //帧起始
 		END = 0x7E,   //帧结尾
 	} R_MSG;
-
-	union {
-		uint8 buff[4];
-		uint32 password;
-	} RFU[30]; //2--2H=2
-
-	union {
-		uint8 buff[12];
-		uint8 user_means[12];
-	} EPC[30]; //2--6H=6
-
-	union {
-		uint8 buff[12];
-		uint8 user_means[12];
-	} TID[30]; //0--6H=6
-
-	union {
-		uint8 buff[12];
-		uint8 user_means[12];
-	} USER[30]; //0--6H=6
-
+	enum
+	{
+		Error,
+		Ok,
+	} Return;
+	struct
+	{
+		union {
+			uint8 buff[4];
+			uint32 password;
+		} RFU; //2--2H=2
+		union {
+			uint8 buff[12];
+			union {
+				struct
+				{
+					float price; //4字节
+					uint8 area;  //产地
+					uint8 kind1; //日化、生活、生鲜等
+					uint8 kind2;
+					uint8 grade;	  //品级
+					uint8 row;		  //行
+					uint8 column;	 //列
+					uint16 productID; //同类商品按ID区分，售出后ID清零
+				}goods;
+				struct 
+				{
+					float remain;//8字节
+					uint8 ID[8];
+				}person;
+			} means;
+		} EPC; //2--6H=6
+		union {
+			uint8 buff[12];
+			uint8 user_means[12];
+		} TID; //0--6H=6
+		union {
+			uint8 buff[12];
+			uint8 user_means[12];
+		} USER;			  //0--6H=6
+	} mem[30], personMem; //结构体之间可互相传值
 } MSG_stack_Typedef;
 
 #endif
