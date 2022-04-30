@@ -2407,6 +2407,9 @@
                     <name>$PROJ_DIR$\..\..\App\user\inc\buffer.h</name>
                 </file>
                 <file>
+                    <name>$PROJ_DIR$\..\..\App\user\inc\goods.h</name>
+                </file>
+                <file>
                     <name>$PROJ_DIR$\..\..\App\user\inc\interrupt.h</name>
                 </file>
                 <file>
@@ -2429,6 +2432,9 @@
                 <name>src</name>
                 <file>
                     <name>$PROJ_DIR$\..\..\App\user\src\buffer.c</name>
+                </file>
+                <file>
+                    <name>$PROJ_DIR$\..\..\App\user\src\goods.c</name>
                 </file>
                 <file>
                     <name>$PROJ_DIR$\..\..\App\user\src\interrupt.c</name>

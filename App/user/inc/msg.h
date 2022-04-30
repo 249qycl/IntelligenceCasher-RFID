@@ -8,21 +8,13 @@ typedef struct {
    uint8 isSelectParam;
    uint8 isSelectMode;
 
-   uint8 isReadRFU;
-   uint8 isReadEPC;
-   uint8 isReadTID;
-   uint8 isReadUSER;
-
-   uint8 isWriteRFU;
    uint8 isWriteEPC;
-   uint8 isWriteUSER;
 }CMD_Ctrl;
 extern CMD_Ctrl cmdCtrl;
 
 
-void answerAnalysis();
-void memReadSave();
+void answerAnalysis(uint8 *buf);
 void cmdSend();
-uint8 memFilter(uint8 *pBuff);
+uint8 memFilter(uint8 *buf);
 
 #endif

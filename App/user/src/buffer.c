@@ -34,31 +34,38 @@ void putBuff(UARTn_e uratn, uint8 *buff, uint32 len)
 uint8 getBuffer(uint8 *p)
 {
     static uint8 isReceive = 0, count = 0;
-    uint8 data = dataQueue.pop();
-    switch (isReceive)
+    uint8 data;
+
+    while (1)
     {
-    case 0:
-        if (data == BEGIN)
+        if (Ok != queueIsEmpty()) //队列非空
+            data = dataQueue.pop();
+        else
+            return Error;
+
+        switch (isReceive)
         {
-            count = 0;
-            isReceive = 1;
+        case 0:
+            if (data == BEGIN)
+            {
+                count = 0;
+                isReceive = 1;
+                p[count++] = data;
+            }
+            break;
+        case 1:
             p[count++] = data;
+            if (data == END)
+            {
+                isReceive = 0;
+                if (Ok == bufcheck(p))
+                    return Ok;
+            }
+            break;
+        default:
+            break;
         }
-        break;
-    case 1:
-        p[count++] = data;
-        if (data == END)
-        {
-            isReceive = 0;
-            if (Error == bufcheck(p))
-                return Error;
-            return Ok;
-        }
-        break;
-    default:
-        return Error;
     }
-    return Error;
 }
 /***********************************************************************************************
 *函数名	: bufcmp 
@@ -100,14 +107,14 @@ uint8 bufcpy(uint8 *buf1, uint8 *buf2, uint8 len)
 *作  者	: zyl
 *日  期	: 2020/2/17  
 ***********************************************************************************************/
-uint8 bufcheck(uint8 *pbuf)
+uint8 bufcheck(uint8 *buf)
 {
     uint16 sum = 0, i = 1;
-    while (pbuf[i + 1] != END)
+    while (buf[i + 1] != END)
     {
-        sum += pbuf[i++];
+        sum += buf[i++];
     }
-    if (pbuf[i] == (sum % 256))
+    if (buf[i] == (sum % 256))
         return Ok;
     else
         return Error;
@@ -121,13 +128,13 @@ uint8 bufcheck(uint8 *pbuf)
 *作  者	: zyl
 *日  期	: 2020/2/17  
 ***********************************************************************************************/
-uint8 bufsum(uint8 *pbuf)
+uint8 bufsum(uint8 *buf)
 {
     uint16 sum = 0, i = 1;
-    while (pbuf[i + 1] != END)
+    while (buf[i + 1] != END)
     {
-        sum += pbuf[i++];
+        sum += buf[i++];
     }
-    pbuf[i] = (sum % 256);
+    buf[i] = (sum % 256);
     return Ok;
 }

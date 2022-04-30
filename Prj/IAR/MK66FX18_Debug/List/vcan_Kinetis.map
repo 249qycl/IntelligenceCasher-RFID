@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR ELF Linker V8.22.1.15669/W32 for ARM                18/Feb/2020  18:34:29
+# IAR ELF Linker V8.22.1.15669/W32 for ARM                27/Feb/2020  20:14:37
 # Copyright 2007-2018 IAR Systems AB.
 #
 #    Output file  =  
@@ -8,10 +8,11 @@
 #    Map file     =  
 #        F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\Prj\IAR\MK66FX18_Debug\List\vcan_Kinetis.map
 #    Command line =  
-#        -f C:\Users\ZHANGY~1\AppData\Local\Temp\EWE0D5.tmp
+#        -f C:\Users\ZHANGY~1\AppData\Local\Temp\EWCF3E.tmp
 #        (F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\Prj\IAR\MK66FX18_Debug\Obj\buffer.o
 #        F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\Prj\IAR\MK66FX18_Debug\Obj\diskio.o
 #        F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\Prj\IAR\MK66FX18_Debug\Obj\ff.o
+#        F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\Prj\IAR\MK66FX18_Debug\Obj\goods.o
 #        F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\Prj\IAR\MK66FX18_Debug\Obj\interrupt.o
 #        F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\Prj\IAR\MK66FX18_Debug\Obj\main.o
 #        F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\Prj\IAR\MK66FX18_Debug\Obj\misc.o
@@ -109,79 +110,151 @@ No sections matched the following patterns:
   section .textrw_init  in block CodeRelocate
 
 
-  Section              Kind        Address   Size  Object
-  -------              ----        -------   ----  ------
-"A0":                                       0x410
-  .intvec              const    0x00010000  0x410  vectors.o [1]
-                              - 0x00010410  0x410
+  Section              Kind        Address    Size  Object
+  -------              ----        -------    ----  ------
+"A0":                                        0x410
+  .intvec              const    0x00010000   0x410  vectors.o [1]
+                              - 0x00010410   0x410
 
-"A1":                                         0x8
-  .noinit              ro code  0x00010410    0x8  startup_MK66FX18.o [1]
-                              - 0x00010418    0x8
+"A1":                                          0x8
+  .noinit              ro code  0x00010410     0x8  startup_MK66FX18.o [1]
+                              - 0x00010418     0x8
 
-"P1", part 1 of 2:                          0xd28
-  .text                ro code  0x00010418  0x2b8  MK66_uart.o [1]
-  .text                ro code  0x000106d0   0x54  MK66_port.o [1]
-  .text                ro code  0x00010724   0xd0  MK66_conf.o [1]
-  .text                ro code  0x000107f4   0x80  VCAN_LED.o [1]
-  .text                ro code  0x00010874  0x108  MK66_gpio.o [1]
-  .text                ro code  0x0001097c  0x130  user.o [1]
-  .text                ro code  0x00010aac   0x54  misc.o [1]
-  .text                ro code  0x00010b00   0xf4  buffer.o [1]
-  .text                ro code  0x00010bf4  0x12c  system_MK66FX18.o [1]
-  .text                ro code  0x00010d20   0x40  MK66_wdog.o [1]
-  .text                ro code  0x00010d60   0x20  main.o [1]
-  .text                ro code  0x00010d80   0xd4  queue.o [1]
-  .rodata              const    0x00010e54   0x60  MK66_gpio.o [1]
-  .rodata              const    0x00010eb4   0x60  MK66_uart.o [1]
-  .rodata              const    0x00010f14   0x5c  misc.o [1]
-  .data_init                    0x00010f70   0x5c  <Block>
-    Initializer bytes  const    0x00010f70   0x5c  <for .data-1>
-  .text                ro code  0x00010fcc   0x40  zero_init3.o [5]
-  .text                ro code  0x0001100c   0x3c  interrupt.o [1]
-  .text                ro code  0x00011048   0x28  data_init.o [5]
-  .rodata              const    0x00011070   0x24  MK66_conf.o [1]
-  .text                ro code  0x00011094   0x22  fpinit_M.o [4]
-  .iar.init_table      const    0x000110b8   0x10  - Linker created -
-  .text                ro code  0x000110c8   0x1e  cmain.o [5]
-  .text                ro code  0x000110e6    0x4  low_level_init.o [3]
-  .text                ro code  0x000110ea    0x4  exit.o [3]
-  .text                ro code  0x000110f0    0xa  cexit.o [5]
-  .text                ro code  0x000110fc    0xc  XXexit.o [5]
-  .rodata              const    0x00011108   0x14  user.o [1]
-  .rodata              const    0x0001111c    0xc  MK66_conf.o [1]
-  .rodata              const    0x00011128    0xc  user.o [1]
-  .text                ro code  0x00011134    0xc  cstartup_M.o [5]
-  .rodata              const    0x00011140    0x0  zero_init3.o [5]
-                              - 0x00011140  0xd28
+"P1", part 1 of 2:                          0x1d18
+  .text                ro code  0x00010418   0x4f8  user.o [1]
+  .text                ro code  0x00010910   0x2b8  MK66_uart.o [1]
+  .text                ro code  0x00010bc8    0x54  misc.o [1]
+  .text                ro code  0x00010c1c   0x184  buffer.o [1]
+  .text                ro code  0x00010da0   0x2d4  goods.o [1]
+  .text                ro code  0x00011074    0x54  MK66_port.o [1]
+  .text                ro code  0x000110c8    0xd0  MK66_conf.o [1]
+  .text                ro code  0x00011198    0xc4  queue.o [1]
+  .text                ro code  0x0001125c    0x1a  U32ToDbl.o [4]
+  .text                ro code  0x00011278   0x1a2  DblMul.o [4]
+  .text                ro code  0x0001141c   0x178  DblAdd.o [4]
+  .text                ro code  0x00011594    0x80  VCAN_LED.o [1]
+  .text                ro code  0x00011614    0xd2  DblSub.o [4]
+  .text                ro code  0x000116e8   0x108  MK66_gpio.o [1]
+  .text                ro code  0x000117f0   0x198  msg.o [1]
+  .data_init                    0x00011988   0x138  <Block>
+    Initializer bytes  const    0x00011988   0x138  <for .data-1>
+  .text                ro code  0x00011ac0   0x12c  system_MK66FX18.o [1]
+  .text                ro code  0x00011bec    0x40  MK66_wdog.o [1]
+  .text                ro code  0x00011c2c    0x48  main.o [1]
+  .rodata              const    0x00011c74    0x60  MK66_gpio.o [1]
+  .rodata              const    0x00011cd4    0x60  MK66_uart.o [1]
+  .rodata              const    0x00011d34    0x5c  misc.o [1]
+  .text                ro code  0x00011d90    0x48  interrupt.o [1]
+  .text                ro code  0x00011dd8    0x40  zero_init3.o [5]
+  .rodata              const    0x00011e18    0x2c  goods.o [1]
+  .text                ro code  0x00011e44    0x28  data_init.o [5]
+  .rodata              const    0x00011e6c    0x24  MK66_conf.o [1]
+  .text                ro code  0x00011e90    0x22  fpinit_M.o [4]
+  .iar.init_table      const    0x00011eb4    0x10  - Linker created -
+  .text                ro code  0x00011ec4    0x1e  cmain.o [5]
+  .text                ro code  0x00011ee2     0x4  low_level_init.o [3]
+  .text                ro code  0x00011ee6     0x4  exit.o [3]
+  .text                ro code  0x00011eec     0xa  cexit.o [5]
+  .text                ro code  0x00011ef8     0xc  XXexit.o [5]
+  .rodata              const    0x00011f04    0x18  goods.o [1]
+  .rodata              const    0x00011f1c    0x18  goods.o [1]
+  .rodata              const    0x00011f34    0x14  goods.o [1]
+  .rodata              const    0x00011f48    0x14  user.o [1]
+  .rodata              const    0x00011f5c    0x14  user.o [1]
+  .rodata              const    0x00011f70    0x10  goods.o [1]
+  .rodata              const    0x00011f80    0x10  goods.o [1]
+  .rodata              const    0x00011f90    0x10  goods.o [1]
+  .rodata              const    0x00011fa0    0x10  goods.o [1]
+  .rodata              const    0x00011fb0    0x10  goods.o [1]
+  .rodata              const    0x00011fc0    0x10  goods.o [1]
+  .rodata              const    0x00011fd0    0x10  user.o [1]
+  .rodata              const    0x00011fe0     0xc  goods.o [1]
+  .rodata              const    0x00011fec     0xc  goods.o [1]
+  .rodata              const    0x00011ff8     0xc  goods.o [1]
+  .rodata              const    0x00012004     0xc  MK66_conf.o [1]
+  .rodata              const    0x00012010     0xc  user.o [1]
+  .rodata              const    0x0001201c     0xc  user.o [1]
+  .rodata              const    0x00012028     0xc  user.o [1]
+  .rodata              const    0x00012034     0xc  user.o [1]
+  .text                ro code  0x00012040     0xc  cstartup_M.o [5]
+  .rodata              const    0x0001204c     0x8  goods.o [1]
+  .rodata              const    0x00012054     0x8  goods.o [1]
+  .rodata              const    0x0001205c     0x8  goods.o [1]
+  .rodata              const    0x00012064     0x8  goods.o [1]
+  .rodata              const    0x0001206c     0x8  goods.o [1]
+  .rodata              const    0x00012074     0x8  goods.o [1]
+  .rodata              const    0x0001207c     0x8  goods.o [1]
+  .rodata              const    0x00012084     0x8  goods.o [1]
+  .rodata              const    0x0001208c     0x8  goods.o [1]
+  .rodata              const    0x00012094     0x8  goods.o [1]
+  .rodata              const    0x0001209c     0x8  goods.o [1]
+  .rodata              const    0x000120a4     0x8  goods.o [1]
+  .rodata              const    0x000120ac     0x8  goods.o [1]
+  .rodata              const    0x000120b4     0x8  goods.o [1]
+  .rodata              const    0x000120bc     0x8  goods.o [1]
+  .rodata              const    0x000120c4     0x8  goods.o [1]
+  .rodata              const    0x000120cc     0x8  goods.o [1]
+  .rodata              const    0x000120d4     0x8  goods.o [1]
+  .rodata              const    0x000120dc     0x8  goods.o [1]
+  .rodata              const    0x000120e4     0x8  goods.o [1]
+  .rodata              const    0x000120ec     0x8  goods.o [1]
+  .rodata              const    0x000120f4     0x8  goods.o [1]
+  .rodata              const    0x000120fc     0x8  goods.o [1]
+  .rodata              const    0x00012104     0x8  goods.o [1]
+  .rodata              const    0x0001210c     0x8  goods.o [1]
+  .rodata              const    0x00012114     0x8  goods.o [1]
+  .rodata              const    0x0001211c     0x4  goods.o [1]
+  .rodata              const    0x00012120     0x4  goods.o [1]
+  .rodata              const    0x00012124     0x4  goods.o [1]
+  .rodata              const    0x00012128     0x4  goods.o [1]
+  .rodata              const    0x0001212c     0x4  goods.o [1]
+  .rodata              const    0x00012130     0x0  zero_init3.o [5]
+                              - 0x00012130  0x1d18
 
-"P1", part 2 of 2:                            0x0
-  CodeRelocate                  0x00011140    0x0  <Block>
+"P1", part 2 of 2:                             0x0
+  CodeRelocate                  0x00012130     0x0  <Block>
 
-"P2", part 1 of 3:                           0x5c
-  .data                         0x1fff0410   0x5c  <Block>
-    .data-1                     0x1fff0410   0x5c  <Init block>
-      .data            inited   0x1fff0410   0x14  MK66_gpio.o [1]
-      .data            inited   0x1fff0424   0x14  MK66_port.o [1]
-      .data            inited   0x1fff0438   0x14  MK66_uart.o [1]
-      .data            inited   0x1fff044c    0x8  msg_format.o [1]
-      .data            inited   0x1fff0454   0x14  msg_format.o [1]
-      .data            inited   0x1fff0468    0x4  VCAN_LED.o [1]
-                              - 0x1fff046c   0x5c
+"P2", part 1 of 3:                           0x138
+  .data                         0x1fff0410   0x138  <Block>
+    .data-1                     0x1fff0410   0x138  <Init block>
+      .data            inited   0x1fff0410    0x18  goods.o [1]
+      .data            inited   0x1fff0428    0x18  goods.o [1]
+      .data            inited   0x1fff0440    0x48  goods.o [1]
+      .data            inited   0x1fff0488    0x18  goods.o [1]
+      .data            inited   0x1fff04a0    0x14  MK66_gpio.o [1]
+      .data            inited   0x1fff04b4    0x14  MK66_port.o [1]
+      .data            inited   0x1fff04c8    0x14  MK66_uart.o [1]
+      .data            inited   0x1fff04dc     0x8  msg_format.o [1]
+      .data            inited   0x1fff04e4    0x14  msg_format.o [1]
+      .data            inited   0x1fff04f8     0x8  msg_format.o [1]
+      .data            inited   0x1fff0500     0xc  msg_format.o [1]
+      .data            inited   0x1fff050c    0x1c  msg_format.o [1]
+      .data            inited   0x1fff0528    0x1c  msg_format.o [1]
+      .data            inited   0x1fff0544     0x4  VCAN_LED.o [1]
+                              - 0x1fff0548   0x138
 
-"P2", part 2 of 3:                          0x174
-  .bss                          0x1fff046c  0x174  <Block>
-    .bss               zero     0x1fff046c   0x28  buffer.o [1]
-    .bss               zero     0x1fff0494  0x13c  queue.o [1]
-    .bss               zero     0x1fff05d0    0x4  system_MK66FX18.o [1]
-    .bss               zero     0x1fff05d4    0x4  system_MK66FX18.o [1]
-    .bss               zero     0x1fff05d8    0x4  system_MK66FX18.o [1]
-    .bss               zero     0x1fff05dc    0x1  buffer.o [1]
-    .bss               zero     0x1fff05dd    0x1  buffer.o [1]
-                              - 0x1fff05e0  0x174
+"P2", part 2 of 3:                           0x5dc
+  .bss                          0x1fff0548   0x5dc  <Block>
+    .bss               zero     0x1fff0548    0x28  buffer.o [1]
+    .bss               zero     0x1fff0570     0x8  msg.o [1]
+    .bss               zero     0x1fff0578    0x18  msg_format.o [1]
+    .bss               zero     0x1fff0590   0x184  msg_format.o [1]
+    .bss               zero     0x1fff0714   0x3f8  queue.o [1]
+    .bss               zero     0x1fff0b0c     0x4  system_MK66FX18.o [1]
+    .bss               zero     0x1fff0b10     0x4  system_MK66FX18.o [1]
+    .bss               zero     0x1fff0b14     0x4  system_MK66FX18.o [1]
+    .bss               zero     0x1fff0b18     0x2  user.o [1]
+    .bss               zero     0x1fff0b1a     0x1  buffer.o [1]
+    .bss               zero     0x1fff0b1b     0x1  buffer.o [1]
+    .bss               zero     0x1fff0b1c     0x1  msg.o [1]
+    .bss               zero     0x1fff0b1d     0x1  user.o [1]
+    .bss               zero     0x1fff0b1e     0x1  user.o [1]
+    .bss               zero     0x1fff0b1f     0x1  user.o [1]
+    .bss               zero     0x1fff0b20     0x1  user.o [1]
+                              - 0x1fff0b24   0x5dc
 
-"P2", part 3 of 3:                            0x0
-  CodeRelocateRam               0x1fff05e0    0x0  <Block>
+"P2", part 3 of 3:                             0x0
+  CodeRelocateRam               0x1fff0b24     0x0  <Block>
 
 
 *******************************************************************************
@@ -191,8 +264,8 @@ No sections matched the following patterns:
           Address     Size
           -------     ----
 Zero (__iar_zero_init3)
-    1 destination range, total size 0x172:
-          0x1fff046c  0x172
+    1 destination range, total size 0x5d9:
+          0x1fff0548  0x5d9
 
 
 
@@ -209,18 +282,20 @@ F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\Prj\IAR\MK66FX18_Debug
     MK66_uart.o             696      116       20
     MK66_wdog.o              64
     VCAN_LED.o              128        4        4
-    buffer.o                244                42
-    interrupt.o              60
-    main.o                   32
+    buffer.o                388                42
+    goods.o                 724      616      144
+    interrupt.o              72
+    main.o                   72
     misc.o                   84       92
-    msg_format.o                      28       28
-    queue.o                 212               316
+    msg.o                   408                 9
+    msg_format.o                     104      516
+    queue.o                 196             1 016
     startup_MK66FX18.o        8
     system_MK66FX18.o       300                12
-    user.o                  304       32
+    user.o                1 272      104        6
     vectors.o                      1 040
     ---------------------------------------------
-    Total:                2 688    1 496      462
+    Total:                4 968    2 260    1 809
 
 command line: [2]
     ---------------------------------------------
@@ -233,9 +308,13 @@ dl7M_tlf.a: [3]
     Total:                    8
 
 m7M_tls.a: [4]
+    DblAdd.o                376
+    DblMul.o                418
+    DblSub.o                210
+    U32ToDbl.o               26
     fpinit_M.o               34
     ---------------------------------------------
-    Total:                   34
+    Total:                1 064
 
 rt7M_tl.a: [5]
     XXexit.o                 12
@@ -247,10 +326,10 @@ rt7M_tl.a: [5]
     ---------------------------------------------
     Total:                  168
 
-    Gaps                      4        2
+    Gaps                     10        2
     Linker created                    16
 -------------------------------------------------
-    Grand Total:          2 902    1 514      462
+    Grand Total:          6 218    2 278    1 809
 
 
 *******************************************************************************
@@ -259,93 +338,126 @@ rt7M_tl.a: [5]
 
 Entry                      Address   Size  Type      Object
 -----                      -------   ----  ----      ------
-.bss$$Base              0x1fff046c          --   Gb  - Linker created -
-.bss$$Limit             0x1fff05e0          --   Gb  - Linker created -
+.bss$$Base              0x1fff0548          --   Gb  - Linker created -
+.bss$$Limit             0x1fff0b24          --   Gb  - Linker created -
 .data$$Base             0x1fff0410          --   Gb  - Linker created -
-.data$$Limit            0x1fff046c          --   Gb  - Linker created -
-.data_init$$Base        0x00010f70          --   Gb  - Linker created -
-.data_init$$Limit       0x00010fcc          --   Gb  - Linker created -
-.iar.init_table$$Base   0x000110b8          --   Gb  - Linker created -
-.iar.init_table$$Limit  0x000110c8          --   Gb  - Linker created -
-?main                   0x000110c9         Code  Gb  cmain.o [5]
-ASSERT_FAILED_STR       0x00011070   0x24  Data  Gb  MK66_conf.o [1]
-CodeRelocate$$Base      0x00011140          --   Gb  - Linker created -
-CodeRelocate$$Limit     0x00011140          --   Gb  - Linker created -
-CodeRelocateRam$$Base   0x1fff05e0          --   Gb  - Linker created -
-CodeRelocateRam$$Limit  0x1fff05e0          --   Gb  - Linker created -
-GPIOX                   0x1fff0410   0x14  Data  Gb  MK66_gpio.o [1]
-LED_PTxn                0x1fff0468    0x4  Data  Gb  VCAN_LED.o [1]
-NVIC_EnableIRQ          0x00010419   0x18  Code  Lc  MK66_uart.o [1]
-NVIC_EnableIRQ          0x00010999   0x16  Code  Lc  user.o [1]
-NVIC_SetPriority        0x000109af   0x2c  Code  Lc  user.o [1]
+.data$$Limit            0x1fff0548          --   Gb  - Linker created -
+.data_init$$Base        0x00011988          --   Gb  - Linker created -
+.data_init$$Limit       0x00011ac0          --   Gb  - Linker created -
+.iar.init_table$$Base   0x00011eb4          --   Gb  - Linker created -
+.iar.init_table$$Limit  0x00011ec4          --   Gb  - Linker created -
+?main                   0x00011ec5         Code  Gb  cmain.o [5]
+ASSERT_FAILED_STR       0x00011e6c   0x24  Data  Gb  MK66_conf.o [1]
+CodeRelocate$$Base      0x00012130          --   Gb  - Linker created -
+CodeRelocate$$Limit     0x00012130          --   Gb  - Linker created -
+CodeRelocateRam$$Base   0x1fff0b24          --   Gb  - Linker created -
+CodeRelocateRam$$Limit  0x1fff0b24          --   Gb  - Linker created -
+GPIOX                   0x1fff04a0   0x14  Data  Gb  MK66_gpio.o [1]
+LED_PTxn                0x1fff0544    0x4  Data  Gb  VCAN_LED.o [1]
+NVIC_EnableIRQ          0x00010911   0x18  Code  Lc  MK66_uart.o [1]
+NVIC_EnableIRQ          0x0001043b   0x18  Code  Lc  user.o [1]
+NVIC_SetPriority        0x00010453   0x30  Code  Lc  user.o [1]
 NVIC_SetPriorityGrouping
-                        0x0001097d   0x1c  Code  Lc  user.o [1]
-PIT_Hander              0x0001100d    0xe  Code  Gb  interrupt.o [1]
-PORTX                   0x1fff0424   0x14  Data  Gb  MK66_port.o [1]
-Region$$Table$$Base     0x000110b8          --   Gb  - Linker created -
-Region$$Table$$Limit    0x000110c8          --   Gb  - Linker created -
+                        0x00010419   0x22  Code  Lc  user.o [1]
+PIT_Hander              0x00011d91   0x14  Code  Gb  interrupt.o [1]
+PORTX                   0x1fff04b4   0x14  Data  Gb  MK66_port.o [1]
+Region$$Table$$Base     0x00011eb4          --   Gb  - Linker created -
+Region$$Table$$Limit    0x00011ec4          --   Gb  - Linker created -
 Reset_Handler           0x00010411         Code  Gb  startup_MK66FX18.o [1]
-UART3_RX_Handler        0x0001101b   0x22  Code  Gb  interrupt.o [1]
-UARTN                   0x1fff0438   0x14  Data  Gb  MK66_uart.o [1]
+UART3_RX_Handler        0x00011da5   0x22  Code  Gb  interrupt.o [1]
+UARTN                   0x1fff04c8   0x14  Data  Gb  MK66_uart.o [1]
 __BOOT_STACK_ADDRESS {Abs}
                         0x2002fff8         Data  Gb  command line/config [2]
 __VECTOR_RAM {Abs}      0x1fff0000         Data  Gb  command line/config [2]
 __VECTOR_TABLE {Abs}    0x00010000         Data  Gb  command line/config [2]
-__cmain                 0x000110c9         Code  Gb  cmain.o [5]
+__aeabi_dadd            0x0001141d         Code  Gb  DblAdd.o [4]
+__aeabi_dmul            0x00011279         Code  Gb  DblMul.o [4]
+__aeabi_ui2d            0x0001125d         Code  Gb  U32ToDbl.o [4]
+__cmain                 0x00011ec5         Code  Gb  cmain.o [5]
 __code_start__ {Abs}    0x00010410         Data  Gb  command line/config [2]
-__exit                  0x000110fd         Code  Gb  XXexit.o [5]
-__iar_data_init3        0x00011049   0x28  Code  Gb  data_init.o [5]
-__iar_init_vfp          0x00011095         Code  Gb  fpinit_M.o [4]
-__iar_program_start     0x00011135         Code  Gb  cstartup_M.o [5]
+__exit                  0x00011ef9         Code  Gb  XXexit.o [5]
+__iar_dadd              0x00011615         Code  Gb  DblSub.o [4]
+__iar_data_init3        0x00011e45   0x28  Code  Gb  data_init.o [5]
+__iar_dsub              0x0001142d         Code  Gb  DblAdd.o [4]
+__iar_dsubStart         0x0001143f         Code  Gb  DblAdd.o [4]
+__iar_init_vfp          0x00011e91         Code  Gb  fpinit_M.o [4]
+__iar_program_start     0x00012041         Code  Gb  cstartup_M.o [5]
 __iar_systems$$module {Abs}
                         0x00000001         Data  Gb  command line/config [2]
-__iar_zero_init3        0x00010fcd   0x40  Code  Gb  zero_init3.o [5]
-__low_level_init        0x000110e7    0x4  Code  Gb  low_level_init.o [3]
+__iar_zero_init3        0x00011dd9   0x40  Code  Gb  zero_init3.o [5]
+__low_level_init        0x00011ee3    0x4  Code  Gb  low_level_init.o [3]
 __vector_table          0x00010000  0x410  Data  Gb  vectors.o [1]
-_call_main              0x000110d5         Code  Gb  cmain.o [5]
-_exit                   0x000110f1         Code  Gb  cexit.o [5]
-_main                   0x000110e3         Code  Gb  cmain.o [5]
-assert_failed           0x00010765   0x2c  Code  Gb  MK66_conf.o [1]
-bufcheck                0x00010bb1   0x44  Code  Gb  buffer.o [1]
-bufcmp                  0x00010b8d   0x24  Code  Gb  buffer.o [1]
-bus_clk_khz             0x1fff05d8    0x4  Data  Gb  system_MK66FX18.o [1]
-common_startup          0x00010c59   0x8a  Code  Gb  system_MK66FX18.o [1]
-core_clk_khz            0x1fff05d0    0x4  Data  Gb  system_MK66FX18.o [1]
-core_clk_mhz            0x1fff05d4    0x4  Data  Gb  system_MK66FX18.o [1]
-dataQueue               0x1fff0494  0x13c  Data  Gb  queue.o [1]
-default_isr             0x000107a5   0x3e  Code  Gb  MK66_conf.o [1]
-enter_fputc             0x00010791   0x14  Code  Gb  MK66_conf.o [1]
-exit                    0x000110eb    0x4  Code  Gb  exit.o [3]
-getBuffer               0x00010b01   0x7c  Code  Gb  buffer.o [1]
-getBuffer::count        0x1fff05dd    0x1  Data  Lc  buffer.o [1]
-getBuffer::isReceive    0x1fff05dc    0x1  Data  Lc  buffer.o [1]
-gpio_init               0x00010875   0xc2  Code  Gb  MK66_gpio.o [1]
-gpio_turn               0x00010937   0x3c  Code  Gb  MK66_gpio.o [1]
-led_init                0x000107f5   0x40  Code  Gb  VCAN_LED.o [1]
-led_turn                0x00010835   0x38  Code  Gb  VCAN_LED.o [1]
-main                    0x00010d61   0x20  Code  Gb  main.o [1]
-pBuff                   0x1fff046c   0x28  Data  Gb  buffer.o [1]
-port_init               0x000106d1   0x4c  Code  Gb  MK66_port.o [1]
-queueInit               0x00010d81   0x30  Code  Gb  queue.o [1]
-queueIsEmpty            0x00010e35   0x1a  Code  Gb  queue.o [1]
-queuePop                0x00010dfd   0x36  Code  Gb  queue.o [1]
-queuePush               0x00010db1   0x4c  Code  Gb  queue.o [1]
-rHardwareInfo           0x1fff0454   0x14  Data  Gb  msg_format.o [1]
-rfidReaderInit          0x00010a2b   0x46  Code  Gb  user.o [1]
-set_vector_handler      0x00010acf   0x24  Code  Gb  misc.o [1]
-soft_delay_ms           0x00010749   0x1c  Code  Gb  MK66_conf.o [1]
-soft_delay_us           0x00010725   0x24  Code  Gb  MK66_conf.o [1]
-start                   0x00010bf5   0x20  Code  Gb  system_MK66FX18.o [1]
-sysinit                 0x00010c15   0x44  Code  Gb  system_MK66FX18.o [1]
-systemInit              0x000109db   0x50  Code  Gb  user.o [1]
-tHardwareCmd            0x1fff044c    0x8  Data  Gb  msg_format.o [1]
-uart_init               0x00010431  0x20e  Code  Gb  MK66_uart.o [1]
-uart_putbuff            0x0001065d   0x26  Code  Gb  MK66_uart.o [1]
-uart_putchar            0x0001063f   0x1e  Code  Gb  MK66_uart.o [1]
-uart_rx_irq_en          0x00010683   0x30  Code  Gb  MK66_uart.o [1]
-wdog_disable            0x00010d21   0x16  Code  Gb  MK66_wdog.o [1]
-wdog_unlock             0x00010d37   0x22  Code  Lc  MK66_wdog.o [1]
-write_vtor              0x00010aad   0x22  Code  Gb  misc.o [1]
+_call_main              0x00011ed1         Code  Gb  cmain.o [5]
+_exit                   0x00011eed         Code  Gb  cexit.o [5]
+_main                   0x00011edf         Code  Gb  cmain.o [5]
+accountBalance          0x0001053f  0x160  Code  Gb  user.o [1]
+accountBalance::step    0x1fff0b1d    0x1  Data  Lc  user.o [1]
+answerAnalysis          0x000117f1   0xe6  Code  Gb  msg.o [1]
+answerAnalysis::timer   0x1fff0b1c    0x1  Data  Lc  msg.o [1]
+area                    0x1fff0488   0x18  Data  Gb  goods.o [1]
+assert_failed           0x00011109   0x2c  Code  Gb  MK66_conf.o [1]
+bufcheck                0x00010d21   0x44  Code  Gb  buffer.o [1]
+bufcmp                  0x00010ce1   0x24  Code  Gb  buffer.o [1]
+bufcpy                  0x00010d05   0x1c  Code  Gb  buffer.o [1]
+bufsum                  0x00010d65   0x3c  Code  Gb  buffer.o [1]
+bus_clk_khz             0x1fff0b14    0x4  Data  Gb  system_MK66FX18.o [1]
+cmdCtrl                 0x1fff0570    0x8  Data  Gb  msg.o [1]
+cmdSend                 0x000118d7   0x58  Code  Gb  msg.o [1]
+common_startup          0x00011b25   0x8a  Code  Gb  system_MK66FX18.o [1]
+core_clk_khz            0x1fff0b0c    0x4  Data  Gb  system_MK66FX18.o [1]
+core_clk_mhz            0x1fff0b10    0x4  Data  Gb  system_MK66FX18.o [1]
+dataQueue               0x1fff0714  0x3f8  Data  Gb  queue.o [1]
+default_isr             0x00011149   0x3e  Code  Gb  MK66_conf.o [1]
+enter_fputc             0x00011135   0x14  Code  Gb  MK66_conf.o [1]
+exit                    0x00011ee7    0x4  Code  Gb  exit.o [3]
+getBuffer               0x00010c4f   0x80  Code  Gb  buffer.o [1]
+getBuffer::count        0x1fff0b1b    0x1  Data  Lc  buffer.o [1]
+getBuffer::isReceive    0x1fff0b1a    0x1  Data  Lc  buffer.o [1]
+goodsKind1              0x1fff0428   0x18  Data  Gb  goods.o [1]
+goodsKind2              0x1fff0440   0x48  Data  Gb  goods.o [1]
+goodsPrint              0x00010da1  0x2d4  Code  Gb  goods.o [1]
+goodsUnit               0x1fff0410   0x18  Data  Gb  goods.o [1]
+gpio_init               0x000116e9   0xc2  Code  Gb  MK66_gpio.o [1]
+gpio_turn               0x000117ab   0x3c  Code  Gb  MK66_gpio.o [1]
+isLeave                 0x000107d7   0xb8  Code  Gb  user.o [1]
+isLeave::flag           0x1fff0b20    0x1  Data  Lc  user.o [1]
+isLeave::state          0x1fff0b1f    0x1  Data  Lc  user.o [1]
+isLeave::timer          0x1fff0b18    0x2  Data  Lc  user.o [1]
+led_init                0x00011595   0x40  Code  Gb  VCAN_LED.o [1]
+led_turn                0x000115d5   0x38  Code  Gb  VCAN_LED.o [1]
+main                    0x00011c2d   0x48  Code  Gb  main.o [1]
+memFilter               0x0001192f   0x32  Code  Gb  msg.o [1]
+memWrite                0x0001069f  0x138  Code  Gb  user.o [1]
+memWrite::cmdSort       0x1fff0b1e    0x1  Data  Lc  user.o [1]
+msgStack                0x1fff0590  0x184  Data  Gb  msg_format.o [1]
+pBuff                   0x1fff0548   0x28  Data  Gb  buffer.o [1]
+port_init               0x00011075   0x4c  Code  Gb  MK66_port.o [1]
+putBuff                 0x00010c1d   0x32  Code  Gb  buffer.o [1]
+queueInit               0x00011199   0x30  Code  Gb  queue.o [1]
+queueIsEmpty            0x0001123d   0x1a  Code  Gb  queue.o [1]
+queuePop                0x00011215   0x28  Code  Gb  queue.o [1]
+queuePush               0x000111c9   0x4c  Code  Gb  queue.o [1]
+rHardwareInfo           0x1fff04e4   0x14  Data  Gb  msg_format.o [1]
+rQueryMsg               0x1fff0578   0x18  Data  Gb  msg_format.o [1]
+rfidReaderInit          0x000104d9   0x66  Code  Gb  user.o [1]
+set_vector_handler      0x00010beb   0x24  Code  Gb  misc.o [1]
+soft_delay_ms           0x000110ed   0x1c  Code  Gb  MK66_conf.o [1]
+soft_delay_us           0x000110c9   0x24  Code  Gb  MK66_conf.o [1]
+start                   0x00011ac1   0x20  Code  Gb  system_MK66FX18.o [1]
+sysinit                 0x00011ae1   0x44  Code  Gb  system_MK66FX18.o [1]
+systemInit              0x00010483   0x56  Code  Gb  user.o [1]
+tHardwareCmd            0x1fff04dc    0x8  Data  Gb  msg_format.o [1]
+tOnceCmd                0x1fff04f8    0x8  Data  Gb  msg_format.o [1]
+tPoll_20                0x1fff0500    0xc  Data  Gb  msg_format.o [1]
+tSelectCmd              0x1fff050c   0x1c  Data  Gb  msg_format.o [1]
+tWriteEPC               0x1fff0528   0x1c  Data  Gb  msg_format.o [1]
+uart_init               0x00010929  0x20e  Code  Gb  MK66_uart.o [1]
+uart_putbuff            0x00010b55   0x26  Code  Gb  MK66_uart.o [1]
+uart_putchar            0x00010b37   0x1e  Code  Gb  MK66_uart.o [1]
+uart_rx_irq_en          0x00010b7b   0x30  Code  Gb  MK66_uart.o [1]
+wdog_disable            0x00011bed   0x16  Code  Gb  MK66_wdog.o [1]
+wdog_unlock             0x00011c03   0x22  Code  Lc  MK66_wdog.o [1]
+write_vtor              0x00010bc9   0x22  Code  Gb  misc.o [1]
 
 
 [1] = F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\Prj\IAR\MK66FX18_Debug\Obj
@@ -354,9 +466,9 @@ write_vtor              0x00010aad   0x22  Code  Gb  misc.o [1]
 [4] = m7M_tls.a
 [5] = rt7M_tl.a
 
-  2 902 bytes of readonly  code memory
-  1 514 bytes of readonly  data memory
-    462 bytes of readwrite data memory
+  6 218 bytes of readonly  code memory
+  2 278 bytes of readonly  data memory
+  1 809 bytes of readwrite data memory
 
 Errors: none
 Warnings: none

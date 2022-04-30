@@ -44,5 +44,6 @@
 #include  "user.h"
 #include  "msg_format.h"
 #include  "msg.h"
+#include  "goods.h"
 
 #endif  //__INCLUDE_H__

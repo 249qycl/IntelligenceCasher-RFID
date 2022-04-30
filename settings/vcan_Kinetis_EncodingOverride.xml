@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<userOverrides>
+    <override>
+        <path>F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\App\main.c</path>
+        <encoding>GB2312</encoding>
+    </override>
+    <override>
+        <path>F:\K66系列工程文件夹\K66代码发布\K66_Jlink_UART3\智能收银\App\user\src\goods.c</path>
+        <encoding>GB2312</encoding>
+    </override>
+</userOverrides>

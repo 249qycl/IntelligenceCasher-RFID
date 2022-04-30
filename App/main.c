@@ -2,26 +2,22 @@
 #include "include.h"
 
 
-
-uint8 isPut=0;                                         
-uint8 array1;
-uint8 array2;
-uint8 array3;
-uint8 array4;
-uint8 array5;
 void main()
 {
-	systemInit(); 
 	queueInit();
+	systemInit();
 	rfidReaderInit();
-    while(1)
-    {  
-		//printf("hello world");
-		DELAY_MS(20);
-//		printf("%2x",dataQueue.array[0]);
-//		printf("%2x",dataQueue.array[1]);
-//		printf("%2x",dataQueue.array[2]);
-//		printf("%2x",dataQueue.array[3]);
-//		printf("   ");
-    }
+	while (1)
+	{
+		accountBalance();
+		cmdSend();
+		if (Ok == getBuffer(pBuff)) 
+		{
+			answerAnalysis(pBuff);
+			//printf("  SP1=%d ",msgStack.sp);
+			msgStack.timer = 0;
+		}
+		DELAY_MS(5);
+	}
 }
+

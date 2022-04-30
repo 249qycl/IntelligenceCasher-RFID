@@ -30,8 +30,10 @@ uint8 queuePush(uint8 data)
 
 uint8 queuePop()
 {
-	if(Ok==queueIsEmpty())
-    	return Error;
+/* 	if(Ok==queueIsEmpty())
+    {
+		return Error;
+	}	 */
     uint8 data = dataQueue.array[dataQueue.front];
     dataQueue.front = (dataQueue.front+1)%QUEUE_SIZE;
     	return data;

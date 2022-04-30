@@ -1,13 +1,11 @@
 #include "common.h"
 #include "include.h"
 
-
-
 //5ms定时器中断
 void PIT_Hander(void)
 {
 	PIT_Flag_Clear(PIT0);
-	
+	msgStack.tFlag=1;
 }
 //strncpy(char *dst , char const *src , size_t len);
 // int bcmp(const void *s1, const void *s2, int n);比较字符串s1和s2的前n个字节是否相等说明：如果s1=s2或n=0则返回零，否则返回非零值。bcmp不检查NULL

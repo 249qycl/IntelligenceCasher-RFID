@@ -6,4 +6,7 @@
 
 void systemInit();
 void rfidReaderInit();
+void accountBalance();
+void memWrite(uint8 *step);
+uint8 isLeave();
 #endif
